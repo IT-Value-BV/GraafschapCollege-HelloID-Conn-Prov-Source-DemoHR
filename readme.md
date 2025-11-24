@@ -26,6 +26,7 @@ Volg onderstaande stappen om de koppeling in te richten.
 *Hier voeg je de benodigde scripts en configuratie toe.*  
 1. Op het tabblad **General** kun je de naam wijzigen, bijvoorbeeld naar **Demo HR**  
 2. Voeg het icoon van het bronsysteem toe 
+   `https://raw.githubusercontent.com/IT-Value-BV/GraafschapCollege-HelloID-Conn-Prov-Source-DemoHR/refs/heads/main/icon.png`
 3. Ga naar het tabblad **System**  
 4. Voeg onder **Import scripts** de scripts toe:  
    - `persons.ps1`  
