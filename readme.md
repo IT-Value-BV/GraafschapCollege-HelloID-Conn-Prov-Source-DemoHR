@@ -1,17 +1,8 @@
 
 # Introductie
-HelloID Provisioning is een oplossing om identiteiten en accounts automatisch te beheren.  
-Met deze koppeling importeer je **personen en contracten** uit het Demo HR-systeem naar HelloID.  
-Dit stelt je in staat om eenvoudig te provisionen naar doelsystemen, zoals Active Directory of applicaties.  
-De instructies hieronder zijn speciaal opgesteld voor studenten van het **Graafschap College** en zijn bedoeld voor een **demo-omgeving**.  
-> **Let op:** Alle persoonsgegevens zijn fictief en gegenereerd door AI. Gebruik deze repository **niet** in productie.
+HelloID Provisioning is een oplossing om identiteiten en accounts automatisch te beheren. Met deze koppeling importeer je **personen en contracten** uit het Demo HR-systeem naar HelloID. Dit stelt je in staat om eenvoudig te provisionen naar doelsystemen, zoals Active Directory of applicaties. De instructies hieronder zijn speciaal opgesteld voor studenten van het **Graafschap College** en zijn bedoeld voor een **demo-omgeving**.  
 
----
-
-# :information_source: Informatie
-Deze repository is bedoeld voor studenten van het **Graafschap College**.  
-De broncode mag **niet** gebruikt worden in een productieomgeving.  
-Alle persoonsgegevens in het DemoHR-bronsysteem zijn fictief en gegenereerd door AI.
+> **Let op:** Deze repository is bedoeld voor studenten van het **Graafschap College**. De broncode mag **niet** gebruikt worden in een productieomgeving. Alle persoonsgegevens zijn fictief en gegenereerd door AI. Gebruik deze repository **niet** in productie.
 
 ---
 
@@ -97,3 +88,9 @@ Stel thresholds in op het tabblad **Thresholds**:
 
 Vanaf nu heb je personen en contracten geïmporteerd in je HelloID-omgeving.  
 Je kunt deze gebruiken om te provisionen naar doelsystemen.
+
+## Handige links voor extra hulp
+Voor meer uitleg en verdieping kun je deze links gebruiken:  
+
+- [Getting started with HelloID](https://www.tools4ever.nl/blog/?series%5B0%5D=getting-started-with-helloid)
+- [HelloID documentatie](https://docs.helloid.com/en/provisioning.html)
