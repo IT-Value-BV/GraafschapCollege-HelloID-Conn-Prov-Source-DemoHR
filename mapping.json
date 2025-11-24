@@ -1,0 +1,310 @@
+{
+    "personMappings": [
+        {
+            "name": "Contact.Personal.Address.Country",
+            "mode": "field",
+            "value": "PersonalAddressCountry",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Personal.Address.HouseNumber",
+            "mode": "field",
+            "value": "PersonalAddressHouseNumber",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Personal.Address.HouseNumberExt",
+            "mode": "field",
+            "value": "PersonalAddressHouseNumberExt",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Personal.Address.Locality",
+            "mode": "field",
+            "value": "PersonalAddressLocality",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Personal.Address.PostalCode",
+            "mode": "field",
+            "value": "PersonalAddressPostalCode",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Personal.Address.Street",
+            "mode": "field",
+            "value": "PersonalAddressStreet",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Personal.Email",
+            "mode": "field",
+            "value": "EmailPrivate",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Personal.Phone.Fixed",
+            "mode": "field",
+            "value": "PhoneFixedPersonal",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Personal.Phone.Mobile",
+            "mode": "field",
+            "value": "PhoneMobilePersonal",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Details.BirthDate",
+            "mode": "field",
+            "value": "Birthdate",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Details.BirthLocality",
+            "mode": "field",
+            "value": "BirthLocality",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Details.Gender",
+            "mode": "complex",
+            "value": "function translateGender() {\r\n    const gender = source.Gender\r\n\r\n    if (gender === 'Male') {\r\n        return 'Man'\r\n    } else {\r\n        return 'Vrouw'\r\n    }\r\n}\r\n\r\ntranslateGender()",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Details.MaritalStatus",
+            "mode": "field",
+            "value": "MaritalStatus",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "ExternalId",
+            "mode": "field",
+            "value": "ExternalId",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Name.Convention",
+            "mode": "field",
+            "value": "Convention",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Name.FamilyName",
+            "mode": "field",
+            "value": "FamilyName",
+            "validation": {
+                "required": true
+            }
+        },
+        {
+            "name": "Name.FamilyNamePartner",
+            "mode": "field",
+            "value": "FamilyNamePartner",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Name.FamilyNamePartnerPrefix",
+            "mode": "field",
+            "value": "FamilyNamePartnerPrefix",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Name.FamilyNamePrefix",
+            "mode": "field",
+            "value": "FamilyNamePrefix",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Name.GivenName",
+            "mode": "field",
+            "value": "GivenName",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Name.Initials",
+            "mode": "field",
+            "value": "Initials",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Name.NickName",
+            "mode": "field",
+            "value": "Nickname",
+            "validation": {
+                "required": true
+            }
+        }
+    ],
+    "contractMappings": [
+        {
+            "name": "Department.DisplayName",
+            "mode": "field",
+            "value": "DepartmentName",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Department.ExternalId",
+            "mode": "field",
+            "value": "DepartmentExternalId",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Details.Fte",
+            "mode": "field",
+            "value": "Fte",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Details.HoursPerWeek",
+            "mode": "field",
+            "value": "HoursPerWeek",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Details.Percentage",
+            "mode": "field",
+            "value": "Percentage",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Details.Sequence",
+            "mode": "field",
+            "value": "Sequence",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "EndDate",
+            "mode": "field",
+            "value": "EndDate",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "ExternalId",
+            "mode": "field",
+            "value": "ExternalId",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Location.Code",
+            "mode": "field",
+            "value": "LocationExternalId",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Location.ExternalId",
+            "mode": "field",
+            "value": "LocationExternalId",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Location.Name",
+            "mode": "field",
+            "value": "LocationName",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Organization.Name",
+            "mode": "field",
+            "value": "Organization",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "StartDate",
+            "mode": "field",
+            "value": "StartDate",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Title.Code",
+            "mode": "field",
+            "value": "TitleExternalId",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Title.ExternalId",
+            "mode": "field",
+            "value": "TitleExternalId",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Title.Name",
+            "mode": "field",
+            "value": "TitleName",
+            "validation": {
+                "required": false
+            }
+        }
+    ]
+}

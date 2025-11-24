@@ -1,0 +1,67 @@
+[
+  {
+    "key": "StorageAccount",
+    "type": "input",
+    "templateOptions": {
+      "label": "Azure Storage Account name",
+      "placeholder": "Azure Storage Account name",
+      "required": true
+    }
+  },
+  {
+    "key": "AccessKey",
+    "type": "input",
+    "defaultValue": "",
+    "templateOptions": {
+      "label": "Access key",
+      "type": "password",
+      "placeholder": "Access key",
+      "required": true
+    }
+  },
+  {
+    "key": "Table.Employees",
+    "type": "input",
+    "templateOptions": {
+      "label": "Table name employees",
+      "placeholder": "Table name",
+      "required": true
+    }
+  },
+  {
+    "key": "Table.Contracts",
+    "type": "input",
+    "templateOptions": {
+      "label": "Table name contracts",
+      "placeholder": "Table name",
+      "required": true
+    }
+  },
+  {
+    "key": "Table.Departments",
+    "type": "input",
+    "templateOptions": {
+      "label": "Table name departments",
+      "placeholder": "Table name",
+      "required": true
+    }
+  },
+  {
+    "key": "Table.Titles",
+    "type": "input",
+    "templateOptions": {
+      "label": "Table name titles",
+      "placeholder": "Table name",
+      "required": true
+    }
+  },
+  {
+    "key": "Table.Locations",
+    "type": "input",
+    "templateOptions": {
+      "label": "Table name locations",
+      "placeholder": "Table name",
+      "required": true
+    }
+  }
+]
