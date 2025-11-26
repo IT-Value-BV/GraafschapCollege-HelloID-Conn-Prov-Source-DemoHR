@@ -114,8 +114,8 @@
         },
         {
             "name": "Name.Convention",
-            "mode": "field",
-            "value": "Convention",
+            "mode": "complex",
+            "value": "function getNameConvention() {\r\n    const convention = source.Convention\r\n\r\n    switch (convention) {\r\n        case 1:\r\n            return 'BP'\r\n        case 2:\r\n            return 'P'\r\n        case 3:\r\n            return 'PB'\r\n        default: \r\n            return 'B'\r\n    }\r\n}\r\n\r\ngetNameConvention()",
             "validation": {
                 "required": false
             }
@@ -181,7 +181,7 @@
         {
             "name": "Department.DisplayName",
             "mode": "field",
-            "value": "DepartmentName",
+            "value": "Department.DisplayName",
             "validation": {
                 "required": false
             }
@@ -189,7 +189,7 @@
         {
             "name": "Department.ExternalId",
             "mode": "field",
-            "value": "DepartmentExternalId",
+            "value": "Department.ExternalId",
             "validation": {
                 "required": false
             }
@@ -245,7 +245,7 @@
         {
             "name": "Location.Code",
             "mode": "field",
-            "value": "LocationExternalId",
+            "value": "Location.ExternalId",
             "validation": {
                 "required": false
             }
@@ -253,7 +253,7 @@
         {
             "name": "Location.ExternalId",
             "mode": "field",
-            "value": "LocationExternalId",
+            "value": "Location.ExternalId",
             "validation": {
                 "required": false
             }
@@ -261,7 +261,7 @@
         {
             "name": "Location.Name",
             "mode": "field",
-            "value": "LocationName",
+            "value": "Location.DisplayName",
             "validation": {
                 "required": false
             }
@@ -285,7 +285,7 @@
         {
             "name": "Title.Code",
             "mode": "field",
-            "value": "TitleExternalId",
+            "value": "Title.ExternalId",
             "validation": {
                 "required": false
             }
@@ -293,7 +293,7 @@
         {
             "name": "Title.ExternalId",
             "mode": "field",
-            "value": "TitleExternalId",
+            "value": "Title.ExternalId",
             "validation": {
                 "required": false
             }
@@ -301,7 +301,7 @@
         {
             "name": "Title.Name",
             "mode": "field",
-            "value": "TitleName",
+            "value": "Title.DisplayName",
             "validation": {
                 "required": false
             }

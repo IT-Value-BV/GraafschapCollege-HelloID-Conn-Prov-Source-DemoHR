@@ -58,15 +58,15 @@ Function Get-TableEntities {
 $c = $configuration | ConvertFrom-Json
 
 $TableRequests = @{
-    TableName      = $null
     StorageAccount = $C.StorageAccount
     AccessKey      = $C.AccessKey
     Confirm        = $false
     WhatIf         = [System.Convert]::ToBoolean($dryrun)
 }
 
-# Retrieve data 
+ 
 try {
+    # Retrieve data
     Write-Information "Retrieving data from HR system API"
 
     $TableRequests.TableName = $c.Table.Employees
@@ -75,77 +75,70 @@ try {
     $TableRequests.TableName = $c.Table.Contracts
     $Contracts = Get-TableEntities @TableRequests
 
-    $TableRequests.TableName = $c.Table.Departments
-    $Departments = Get-TableEntities @TableRequests
-    $Departments = $Departments | Group-Object ExternalId -AsString -AsHashTable
+    $Departments = @{}
+    $Locations = @{}
+    $Titles = @{}
 
-    $TableRequests.TableName = $c.Table.Titles
-    $Titles = Get-TableEntities @TableRequests
-    $Titles = $Titles | Group-Object ExternalId -AsString -AsHashTable
-
-    $TableRequests.TableName = $c.Table.Locations
-    $Locations = Get-TableEntities @TableRequests
-    $Locations = $Locations | Group-Object ExternalId -AsString -AsHashTable
-
+    Get-TableEntities @TableRequests -TableName $c.Table.Departments | Foreach-Object {
+        $Departments.Add($_.ExternalId, $_)
+    }
+    Get-TableEntities @TableRequests -TableName $c.Table.Locations | Foreach-Object {
+        $Locations.Add($_.ExternalId, $_)
+    }
+    Get-TableEntities @TableRequests -TableName $c.Table.Titles | Foreach-Object {
+        $Titles.Add($_.ExternalId, $_)
+    }
+    
     Write-Information "Successfully retrieved data from HR system"
-} catch {
-    Write-Verbose "Failed to retrieve data from HR system. Error: $_"
-    Throw "Failed to retrieve data from HR system. Error: $_"
-}
 
-# Enrich contracts
-try {
+    # Enrich contracts
     Write-Information "Enriching contracts with department, title and location information"
 
     $Contracts | ForEach-Object {
-        if ($Departments[$_.DepartmentExternalId]) {
-            $_ | Add-Member -MemberType NoteProperty -Name 'DepartmentName' -Value $Departments[$_.DepartmentExternalId].DisplayName
+        if ($Departments.ContainsKey($_.DepartmentExternalId)) {
+            $_ | Add-Member -MemberType NoteProperty -Name 'Department' -Value $Departments[$_.DepartmentExternalId]
+            $_.PSObject.Properties.Remove('DepartmentExternalId')
         }
-
-        if ($Titles[$_.TitleExternalId]) {
-            $_ | Add-Member -MemberType NoteProperty -Name 'TitleName' -Value $Titles[$_.TitleExternalId].DisplayName
+        if ($Locations.ContainsKey($_.LocationExternalId)) {
+            $_ | Add-Member -MemberType NoteProperty -Name 'Location' -Value $Locations[$_.LocationExternalId]
+            $_.PSObject.Properties.Remove('LocationExternalId')
         }
-
-        if ($Locations[$_.LocationExternalId]) {
-            $_ | Add-Member -MemberType NoteProperty -Name 'LocationName' -Value $Locations[$_.LocationExternalId].DisplayName
-            $_ | Add-Member -MemberType NoteProperty -Name 'LocationCity' -Value $Locations[$_.LocationExternalId].City
-            $_ | Add-Member -MemberType NoteProperty -Name 'LocationHouseNumber' -Value $Locations[$_.LocationExternalId].HouseNumber
-            $_ | Add-Member -MemberType NoteProperty -Name 'LocationPostalCode' -Value $Locations[$_.LocationExternalId].PostalCode
-            $_ | Add-Member -MemberType NoteProperty -Name 'LocationStreet' -Value $Locations[$_.LocationExternalId].Street
-            $_ | Add-Member -MemberType NoteProperty -Name 'LocationType' -Value $Locations[$_.LocationExternalId].Type
+        if ($Titles.ContainsKey($_.TitleExternalId)) {
+            $_ | Add-Member -MemberType NoteProperty -Name 'Title' -Value $Titles[$_.TitleExternalId]
+            $_.PSObject.Properties.Remove('TitleExternalId')
         }
     }
 
     $Contracts = $Contracts | Group-Object PersonExternalId -AsString -AsHashTable
 
     Write-Information "Successfully enriched contracts"
-} catch {
-    Write-Verbose "Failed to enrich contracts. Error: $_"
-    Throw "Failed to enrich contracts. Error: $_"
-}
 
-# Enrich and output persons
-try {
+    # Enrich and output persons
     Write-Information "Enriching persons and output them to HelloID"
 
     $Employees | ForEach-Object {
-        if ($Contracts[$_.ExternalId]) {
-            $_ | Add-Member -MemberType NoteProperty -Name 'Contracts' -Value $Contracts[$_.ExternalId]
+        $Employee = $PSItem
+
+        if ($Contracts[$Employee.ExternalId]) {
+            $Employee | Add-Member -MemberType NoteProperty -Name 'Contracts' -Value $Contracts[$Employee.ExternalId]
         }
 
-        if ($_.FamilyNamePrefix) {
-            $DisplayName = "$($_.Nickname) $($_.FamilyNamePrefix) $($_.FamilyName) ($($_.ExternalId))"
-        } else {
-            $DisplayName = "$($_.Nickname) $($_.FamilyName) ($($_.ExternalId))"
+        $DisplayName = switch ($Employee.Convention) {
+            1 {"$($Employee.Nickname) $($Employee.FamilyNamePrefix) $($Employee.FamilyName) - $($Employee.FamilyNamePartnerPrefix) $($Employee.FamilyNamePartner)"}
+            2 {"$($Employee.Nickname) $($Employee.FamilyNamePartnerPrefix) $($Employee.FamilyNamePartner)"}
+            3 {"$($Employee.Nickname) $($Employee.FamilyNamePartnerPrefix) $($Employee.FamilyNamePartner) - $($Employee.FamilyNamePrefix) $($Employee.FamilyName)"}
+            default {"$($Employee.Nickname) $($Employee.FamilyNamePrefix) $($Employee.FamilyName)"}
         }
 
-        $_ | Add-Member -MemberType NoteProperty -Name 'DisplayName' -Value $DisplayName
+        $DisplayName = ($DisplayName -replace '\s+', ' ') + " ($($Employee.ExternalId))"
 
-        Write-Output $_ | ConvertTo-Json
+        $Employee | Add-Member -MemberType NoteProperty -Name 'DisplayName' -Value $DisplayName
+
+        Write-Output $Employee | ConvertTo-Json -Depth 10
     }
 
     Write-Information "Import successful"
 } catch {
-    Write-Verbose "Failed to enrich persons and output to HelloID. Error: $_"
-    Throw "Failed to enrich persons and output to HelloID. Error: $_"
+    Write-Verbose "Import failed. Error: $_"
+    Throw "Import failed. Error: $_"
 }
