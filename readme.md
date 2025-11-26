@@ -114,10 +114,9 @@ Voor meer uitleg en verdieping kun je deze links gebruiken:
 - [Logging en troubleshooting](https://www.tools4ever.nl/blog/2023/logging-en-troubleshooting/)
 
 **GitHub**
-
-[IT-Value](https://github.com/IT-Value-BV)
-
-[Tools4Ever](https://github.com/Tools4everBV)
+Op de GitHub pagina's van IT-Value en Tools4Ever zijn standaard koppelingen voor HelloID gedocumenteerd.
+- [IT-Value](https://github.com/IT-Value-BV)
+- [Tools4Ever](https://github.com/Tools4everBV)
 
 
 
