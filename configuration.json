@@ -1,6 +1,6 @@
 [
   {
-    "key": "StorageAccount",
+    "key": "Tenant",
     "type": "input",
     "templateOptions": {
       "label": "Azure Storage Account name",

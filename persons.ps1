@@ -16,21 +16,14 @@ Function Get-TableEntities {
     )
 
     begin {
-        $FunctionAuditLogs = [Collections.Generic.List[PSCustomObject]]::new()
 
-        $hmacsha     = [System.Security.Cryptography.HMACSHA256]::new()
-        $hmacsha.key = [Convert]::FromBase64String($AccessKey)
+        if ($AccessKey.StartsWith('?')) {
+             $AccessKey = $AccessKey.TrimStart('?')
+        }
 
-        $TableURL = "https://$($StorageAccount).table.core.windows.net/$($TableName)"
-        $GMTTime  = (Get-Date).ToUniversalTime().toString('R')
-
-        $StringToSign = "$($GMTTime)`n/$($StorageAccount)/$($TableName)"
-        $ComputeHash  = $hmacsha.ComputeHash([Text.Encoding]::UTF8.GetBytes($stringToSign))
-        $Signature = [Convert]::ToBase64String($ComputeHash)
+        $TableURL = "https://$($StorageAccount).table.core.windows.net/$($TableName)?$($AccessKey)"
 
         $Headers = @{
-            'x-ms-date'    = $GMTTime
-            Authorization  = "SharedKeyLite $($storageAccount):$($signature)"
             "x-ms-version" = '2020-04-08'
             Accept         = 'application/json;odata=nometadata'
         }
@@ -55,11 +48,11 @@ Function Get-TableEntities {
     }
 }
 
-$c = $configuration | ConvertFrom-Json
+$Config = $configuration | ConvertFrom-Json
 
 $TableRequests = @{
-    StorageAccount = $C.StorageAccount
-    AccessKey      = $C.AccessKey
+    StorageAccount = $Config.StorageAccount
+    AccessKey      = $Config.AccessKey
     Confirm        = $false
     WhatIf         = [System.Convert]::ToBoolean($dryrun)
 }
@@ -69,23 +62,23 @@ try {
     # Retrieve data
     Write-Information "Retrieving data from HR system API"
 
-    $TableRequests.TableName = $c.Table.Employees
+    $TableRequests.TableName = $Config.Table.Employees
     $Employees = Get-TableEntities @TableRequests
 
-    $TableRequests.TableName = $c.Table.Contracts
+    $TableRequests.TableName = $Config.Table.Contracts
     $Contracts = Get-TableEntities @TableRequests
 
     $Departments = @{}
     $Locations = @{}
     $Titles = @{}
 
-    Get-TableEntities @TableRequests -TableName $c.Table.Departments | Foreach-Object {
+    Get-TableEntities @TableRequests -TableName $Config.Table.Departments | Foreach-Object {
         $Departments.Add($_.ExternalId, $_)
     }
-    Get-TableEntities @TableRequests -TableName $c.Table.Locations | Foreach-Object {
+    Get-TableEntities @TableRequests -TableName $Config.Table.Locations | Foreach-Object {
         $Locations.Add($_.ExternalId, $_)
     }
-    Get-TableEntities @TableRequests -TableName $c.Table.Titles | Foreach-Object {
+    Get-TableEntities @TableRequests -TableName $Config.Table.Titles | Foreach-Object {
         $Titles.Add($_.ExternalId, $_)
     }
     

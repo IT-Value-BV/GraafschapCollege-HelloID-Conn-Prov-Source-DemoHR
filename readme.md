@@ -44,7 +44,7 @@ Volg onderstaande stappen om de koppeling in te richten.
 
 | Veld                        | Waarde                          |
 |----------------------------|--------------------------------|
-| Azure Storage Account Name | `stgtdtestwehelloid01`         |
+| Tenant                     | `stgtdtestwehelloid01`         |
 | Access Key                 | Ontvangen key van IT-Value     |
 | Table Name Employees       | `hrDistEmployees`             |
 | Table Name Contracts       | `hrDistEmployments`           |

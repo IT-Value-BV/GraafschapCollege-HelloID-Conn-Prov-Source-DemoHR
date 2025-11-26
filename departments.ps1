@@ -16,21 +16,14 @@ Function Get-TableEntities {
     )
 
     begin {
-        $FunctionAuditLogs = [Collections.Generic.List[PSCustomObject]]::new()
 
-        $hmacsha     = [System.Security.Cryptography.HMACSHA256]::new()
-        $hmacsha.key = [Convert]::FromBase64String($AccessKey)
+        if ($AccessKey.StartsWith('?')) {
+             $AccessKey = $AccessKey.TrimStart('?')
+        }
 
-        $TableURL = "https://$($StorageAccount).table.core.windows.net/$($TableName)"
-        $GMTTime  = (Get-Date).ToUniversalTime().toString('R')
-
-        $StringToSign = "$($GMTTime)`n/$($StorageAccount)/$($TableName)"
-        $ComputeHash  = $hmacsha.ComputeHash([Text.Encoding]::UTF8.GetBytes($stringToSign))
-        $Signature = [Convert]::ToBase64String($ComputeHash)
+        $TableURL = "https://$($StorageAccount).table.core.windows.net/$($TableName)?$($AccessKey)"
 
         $Headers = @{
-            'x-ms-date'    = $GMTTime
-            Authorization  = "SharedKeyLite $($storageAccount):$($signature)"
             "x-ms-version" = '2020-04-08'
             Accept         = 'application/json;odata=nometadata'
         }
@@ -55,12 +48,12 @@ Function Get-TableEntities {
     }
 }
 
-$c = $configuration | ConvertFrom-Json
+$Config = $configuration | ConvertFrom-Json
 
 $TableRequests = @{
-    TableName      = $c.Table.Departments
-    StorageAccount = $C.StorageAccount
-    AccessKey      = $C.AccessKey
+    TableName      = $Config.Table.Departments
+    StorageAccount = $Config.StorageAccount
+    AccessKey      = $Config.AccessKey
     Confirm        = $false
     WhatIf         = [System.Convert]::ToBoolean($dryrun)
 }
