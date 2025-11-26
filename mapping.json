@@ -1,6 +1,46 @@
 {
     "personMappings": [
         {
+            "name": "Contact.Business.Address.Country",
+            "mode": "fixed",
+            "value": "Nederland",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Business.Address.HouseNumber",
+            "mode": "complex",
+            "value": "function getValue() {\r\n    const contracts = source.Contracts;\r\n    const today = new Date();\r\n\r\n    const activeContracts = contracts.filter(c => {\r\n        const start = new Date(c.StartDate);\r\n        const end = c.EndDate ? new Date(c.EndDate) : null;\r\n        return start <= today && (!end || end >= today);\r\n    });\r\n\r\n    let selectedContract;\r\n\r\n    if (activeContracts.length > 0) {\r\n        // Sort active contracts newest → oldest\r\n        activeContracts.sort((a, b) => new Date(b.StartDate) - new Date(a.StartDate));\r\n        selectedContract = activeContracts[0];\r\n    } else {\r\n        // No active contract → fallback to most recent based on StartDate\r\n        const sorted = [...contracts].sort((a, b) => new Date(b.StartDate) - new Date(a.StartDate));\r\n        selectedContract = sorted[0];\r\n    }\r\n\r\n    return selectedContract.Location.HouseNumber\r\n}\r\n\r\ngetValue();\r\n",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Business.Address.Locality",
+            "mode": "complex",
+            "value": "function getValue() {\r\n    const contracts = source.Contracts;\r\n    const today = new Date();\r\n\r\n    const activeContracts = contracts.filter(c => {\r\n        const start = new Date(c.StartDate);\r\n        const end = c.EndDate ? new Date(c.EndDate) : null;\r\n        return start <= today && (!end || end >= today);\r\n    });\r\n\r\n    let selectedContract;\r\n\r\n    if (activeContracts.length > 0) {\r\n        // Sort active contracts newest → oldest\r\n        activeContracts.sort((a, b) => new Date(b.StartDate) - new Date(a.StartDate));\r\n        selectedContract = activeContracts[0];\r\n    } else {\r\n        // No active contract → fallback to most recent based on StartDate\r\n        const sorted = [...contracts].sort((a, b) => new Date(b.StartDate) - new Date(a.StartDate));\r\n        selectedContract = sorted[0];\r\n    }\r\n\r\n    return selectedContract.Location.City\r\n}\r\n\r\ngetValue();\r\n",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Business.Address.PostalCode",
+            "mode": "complex",
+            "value": "function getValue() {\r\n    const contracts = source.Contracts;\r\n    const today = new Date();\r\n\r\n    const activeContracts = contracts.filter(c => {\r\n        const start = new Date(c.StartDate);\r\n        const end = c.EndDate ? new Date(c.EndDate) : null;\r\n        return start <= today && (!end || end >= today);\r\n    });\r\n\r\n    let selectedContract;\r\n\r\n    if (activeContracts.length > 0) {\r\n        // Sort active contracts newest → oldest\r\n        activeContracts.sort((a, b) => new Date(b.StartDate) - new Date(a.StartDate));\r\n        selectedContract = activeContracts[0];\r\n    } else {\r\n        // No active contract → fallback to most recent based on StartDate\r\n        const sorted = [...contracts].sort((a, b) => new Date(b.StartDate) - new Date(a.StartDate));\r\n        selectedContract = sorted[0];\r\n    }\r\n\r\n    return selectedContract.Location.PostalCode\r\n}\r\n\r\ngetValue();\r\n",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Business.Address.Street",
+            "mode": "complex",
+            "value": "function getValue() {\r\n    const contracts = source.Contracts;\r\n    const today = new Date();\r\n\r\n    const activeContracts = contracts.filter(c => {\r\n        const start = new Date(c.StartDate);\r\n        const end = c.EndDate ? new Date(c.EndDate) : null;\r\n        return start <= today && (!end || end >= today);\r\n    });\r\n\r\n    let selectedContract;\r\n\r\n    if (activeContracts.length > 0) {\r\n        // Sort active contracts newest → oldest\r\n        activeContracts.sort((a, b) => new Date(b.StartDate) - new Date(a.StartDate));\r\n        selectedContract = activeContracts[0];\r\n    } else {\r\n        // No active contract → fallback to most recent based on StartDate\r\n        const sorted = [...contracts].sort((a, b) => new Date(b.StartDate) - new Date(a.StartDate));\r\n        selectedContract = sorted[0];\r\n    }\r\n\r\n    return selectedContract.Location.Street\r\n}\r\n\r\ngetValue();\r\n",
+            "validation": {
+                "required": false
+            }
+        },
+        {
             "name": "Contact.Personal.Address.Country",
             "mode": "field",
             "value": "PersonalAddressCountry",
