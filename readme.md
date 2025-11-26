@@ -7,8 +7,9 @@ HelloID Provisioning is een oplossing om identiteiten en accounts automatisch te
 ---
 
 ## Bronsysteem
-Deze repository bevat alles om te koppelen met het **Demo HR-systeem** vanuit HelloID.  
-Volg onderstaande stappen om de koppeling in te richten.
+Deze repository bevat alles om te koppelen met het **Demo HR-systeem** vanuit HelloID. Achtergrondinformatie over het gebruik van bronsystemen is te vinden op [Importeren brondata uit een HR-systeem](https://www.tools4ever.nl/blog/2023/importeren-brondata-uit-een-hr-systeem/). 
+
+Volg onderstaande stappen om de koppeling in te richten. 
 
 ---
 
@@ -58,7 +59,7 @@ Volg onderstaande stappen om de koppeling in te richten.
 ---
 
 ### **Configureren mapping**  
-*Hier zorg je dat de data correct wordt gemapt.*  
+*Hier zorg je dat de data correct wordt gemapt. Meer informatie over mapping is te vinden op [Brongegevens mappen](https://www.tools4ever.nl/blog/2023/brongegevens-mappen/).* 
 1. Ga naar het tabblad **Persons**  
 2. Klik op **Import** om de mapping te importeren  
 3. Kopieer de code uit `mapping.json`, plak deze in het veld en klik op **Import**  
@@ -87,11 +88,37 @@ Stel thresholds in op het tabblad **Thresholds**:
 
 ---
 
-Vanaf nu heb je personen en contracten geïmporteerd in je HelloID-omgeving.  
-Je kunt deze gebruiken om te provisionen naar doelsystemen.
+Vanaf nu heb je personen en contracten geïmporteerd in je HelloID-omgeving. Deze data kun je gebruiken in business rules en voor het aanmaken van accounts en het beheren autorisaties in doelsystemen. Tools4Ever heeft standaard koppelingen ontwikkeld voor veel applicaties. Deze zijn te vinden op [GitHub](https://github.com/Tools4everBV).
+
+Gebruik de volgende informatie om de HelloID configuratie af te ronden. 
+
+1. Installeren HelloID agent
+- [HelloID Agent installeren en configureren](https://www.tools4ever.nl/blog/2022/helloid-agent-installeren-en-configureren/)
+
+2. Configureren AD doelsysteem
+- [Built-in AD connector](https://www.tools4ever.nl/blog/2023/configuratie-van-een-built-in-ad-connector/)
+
+3. Configureren FreshService doelsysteem
+- [Link volgt nog](https://github.com/IT-Value-BV)
+
+4. Configureren Business Rules
+- [Business rules](https://www.tools4ever.nl/blog/2023/business-rules/)
+
+5. Configureren notificaties en thresholds
+- [Notificaties en thresholds](https://www.tools4ever.nl/blog/2023/notificaties-en-thresholds/)
 
 ## Handige links voor extra hulp
 Voor meer uitleg en verdieping kun je deze links gebruiken:  
 
-- [Getting started with HelloID](https://www.tools4ever.nl/blog/?series%5B0%5D=getting-started-with-helloid)
 - [HelloID documentatie](https://docs.helloid.com/en/provisioning.html)
+- [Logging en troubleshooting](https://www.tools4ever.nl/blog/2023/logging-en-troubleshooting/)
+
+**GitHub**
+[IT-Value](https://github.com/IT-Value-BV)
+[Tools4Ever](https://github.com/Tools4everBV)
+
+
+
+
+
+
