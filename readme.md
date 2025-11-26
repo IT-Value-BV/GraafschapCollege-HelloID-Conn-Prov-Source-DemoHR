@@ -96,7 +96,7 @@ Gebruik de volgende informatie om de HelloID configuratie af te ronden.
 - [HelloID Agent installeren en configureren](https://www.tools4ever.nl/blog/2022/helloid-agent-installeren-en-configureren/)
 
 2. Configureren AD doelsysteem
-- [Built-in AD connector](https://www.tools4ever.nl/blog/2023/configuratie-van-een-built-in-ad-connector/)
+- [Documentatie AD doelsysteem ](https://docs.helloid.com/en/provisioning/target-systems/active-directory-target-systems/add--edit--or-remove-an-active-directory-target-system.html)
 
 3. Configureren FreshService doelsysteem
 - [Link volgt nog](https://github.com/IT-Value-BV)
