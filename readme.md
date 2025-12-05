@@ -99,7 +99,7 @@ Gebruik de volgende informatie om de HelloID configuratie af te ronden.
 - [Documentatie AD doelsysteem ](https://docs.helloid.com/en/provisioning/target-systems/active-directory-target-systems/add--edit--or-remove-an-active-directory-target-system.html)
 
 3. Configureren FreshService doelsysteem
-- [Link volgt nog](https://github.com/IT-Value-BV)
+- [GraafschapCollege-HelloID-Conn-Prov-Target-FreshService-Requesters](https://github.com/IT-Value-BV/GraafschapCollege-HelloID-Conn-Prov-Target-FreshService-Requesters)
 
 4. Configureren Business Rules
 - [Business rules](https://www.tools4ever.nl/blog/2023/business-rules/)
