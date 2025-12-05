@@ -96,7 +96,7 @@ Gebruik de volgende informatie om de HelloID configuratie af te ronden.
 - [HelloID Agent installeren en configureren](https://www.tools4ever.nl/blog/2022/helloid-agent-installeren-en-configureren/)
 
 2. Configureren AD doelsysteem
-- [Documentatie AD doelsysteem ](https://docs.helloid.com/en/provisioning/target-systems/active-directory-target-systems/add--edit--or-remove-an-active-directory-target-system.html)
+- [GraafschapCollege-HelloID-Conn-Prov-Target-ActiveDirectory](https://github.com/IT-Value-BV/GraafschapCollege-HelloID-Conn-Prov-Target-ActiveDirectory)
 
 3. Configureren FreshService doelsysteem
 - [GraafschapCollege-HelloID-Conn-Prov-Target-FreshService-Requesters](https://github.com/IT-Value-BV/GraafschapCollege-HelloID-Conn-Prov-Target-FreshService-Requesters)
@@ -112,6 +112,7 @@ Voor meer uitleg en verdieping kun je deze links gebruiken:
 
 - [HelloID documentatie](https://docs.helloid.com/en/provisioning.html)
 - [Logging en troubleshooting](https://www.tools4ever.nl/blog/2023/logging-en-troubleshooting/)
+- [Getting started handleidingen](https://www.tools4ever.nl/blog/?series%5B0%5D=getting-started-with-helloid&page=1)
 
 **GitHub**
 
