@@ -1,10 +1,10 @@
 [
   {
-    "key": "Tenant",
+    "key": "StorageAccount",
     "type": "input",
     "templateOptions": {
-      "label": "Azure Storage Account name",
-      "placeholder": "Azure Storage Account name",
+      "label": "Tenant Name",
+      "placeholder": "Tenant Name",
       "required": true
     }
   },
