@@ -92,19 +92,16 @@ Vanaf nu heb je personen en contracten geïmporteerd in je HelloID-omgeving. Dez
 
 Gebruik de volgende informatie om de HelloID configuratie af te ronden. 
 
-1. Installeren HelloID agent
-- [HelloID Agent installeren en configureren](https://www.tools4ever.nl/blog/2022/helloid-agent-installeren-en-configureren/)
-
-2. Configureren AD doelsysteem
+1. Configureren AD doelsysteem & HelloID agent
 - [GraafschapCollege-HelloID-Conn-Prov-Target-ActiveDirectory](https://github.com/IT-Value-BV/GraafschapCollege-HelloID-Conn-Prov-Target-ActiveDirectory)
 
-3. Configureren FreshService doelsysteem
+2. Configureren FreshService doelsysteem
 - [GraafschapCollege-HelloID-Conn-Prov-Target-FreshService-Requesters](https://github.com/IT-Value-BV/GraafschapCollege-HelloID-Conn-Prov-Target-FreshService-Requesters)
 
-4. Configureren Business Rules
+3. Configureren Business Rules
 - [Business rules](https://www.tools4ever.nl/blog/2023/business-rules/)
 
-5. Configureren notificaties en thresholds
+4. Configureren notificaties en thresholds
 - [Notificaties en thresholds](https://www.tools4ever.nl/blog/2023/notificaties-en-thresholds/)
 
 ## Handige links voor extra hulp
